@@ -22,9 +22,9 @@ createApp({
                     const result = response.data.response;
                     this.randomNumber = result
                         if (this.randomNumber % 2 === 0) {
-                            this.oddNumbers.push(result)
-                        } else {
                             this.evenNumbers.push(result)
+                        } else {
+                            this.oddNumbers.push(result)
                         }
                 });
         },
