@@ -222,7 +222,7 @@ createApp({
         // auto reply when user input text
         autoreply() {
             setTimeout(() => {
-                let newObject = { date: this.nowDate(), message: "OK!", status: 'received' };
+                let newObject = { date: this.nowDate(), message: 'getASentence here', status: 'received' };
                 let autoReply = this.contacts[this.activeUser].messages;
                 autoReply.push(newObject)
             }, 1000)
