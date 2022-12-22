@@ -175,13 +175,18 @@ createApp({
     // methods
     methods: {
         // User input text
-        getASentence() {
+        autoreply() {
             axios.get('https://flynn.boolean.careers/exercises/api/random/sentence')
                 // arrow function reference 'this' parent
                 .then((response) => {
                     const result = response.data.response;
-                    this.randomSentence.push(result)
-                    console.log(result)
+                    this.randomSentence = result
+                    setTimeout(() => {
+                        let newObject = { date: this.nowDate(), message: this.randomSentence, status: 'received' };
+                        let autoReply = this.contacts[this.activeUser].messages;
+                        autoReply.push(newObject)
+                    }, 1000)
+                    
                 });
         },
         enterText(content) {
@@ -220,13 +225,7 @@ createApp({
             this.activeUser = index;
         },
         // auto reply when user input text
-        autoreply() {
-            setTimeout(() => {
-                let newObject = { date: this.nowDate(), message: 'getASentence here', status: 'received' };
-                let autoReply = this.contacts[this.activeUser].messages;
-                autoReply.push(newObject)
-            }, 1000)
-        },
+
     },
     created() {
     }
